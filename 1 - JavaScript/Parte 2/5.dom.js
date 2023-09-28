@@ -29,3 +29,4 @@ afterBtn.addEventListener("click", e => {
 clearBtn.addEventListener("click", e => {
     list.replaceChildren();
 });
+
