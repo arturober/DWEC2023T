@@ -1,6 +1,12 @@
-fetch("https://api.fullstackpro.es/products-example/products")
-  .then((resp) => resp.json())
-  .then((json) => json.products.forEach((p) => showProduct(p)));
+async function getProducts() {
+  const resp = await fetch(
+    "https://api.fullstackpro.es/products-example/products"
+  );
+  const json = await resp.json();
+  json.products.forEach((p) => showProduct(p));
+}
+
+getProducts();
 
 const form = document.querySelector("#formProduct");
 const imgPreview = document.querySelector("#imgPreview");
@@ -38,22 +44,22 @@ function showProduct(product) {
   btnDelete.append("X");
   btnDelete.dataset.id = product.id;
   tdDelete.append(btnDelete);
-  
+
   btnDelete.addEventListener("click", deleteProduct);
 
   tr.append(tdImage, tdDesc, tdPrice, tdAvail, tdDelete);
   tbody.append(tr);
 }
 
-function deleteProduct() {
-  fetch(
+async function deleteProduct() {
+  const resp = await fetch(
     `https://api.fullstackpro.es/products-example/products/${this.dataset.id}`,
     {
       method: "DELETE",
     }
-  ).then((resp) => {
-    if (resp.ok) this.closest("tr").remove();
-  });
+  );
+
+  if (resp.ok) this.closest("tr").remove();
 }
 
 form.fileName.addEventListener("change", (e) => {
@@ -67,7 +73,7 @@ form.fileName.addEventListener("change", (e) => {
   });
 });
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const product = {
@@ -76,15 +82,17 @@ form.addEventListener("submit", (e) => {
     imageUrl: imgPreview.src,
   };
 
-  fetch("https://api.fullstackpro.es/products-example/products", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(product),
-  })
-    .then((resp) => resp.json())
-    .then((json) => {
-      showProduct(json.product);
-      form.reset();
-      imgPreview.src = "";
-    });
+  const resp = await fetch(
+    "https://api.fullstackpro.es/products-example/products",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(product),
+    }
+  );
+  const json = await resp.json();
+
+  showProduct(json.product);
+  form.reset();
+  imgPreview.src = "";
 });

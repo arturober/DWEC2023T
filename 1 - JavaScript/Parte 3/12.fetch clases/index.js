@@ -1,6 +1,13 @@
-fetch("https://api.fullstackpro.es/products-example/products")
-  .then((resp) => resp.json())
-  .then((json) => json.products.forEach((p) => showProduct(p)));
+import { ProductosService } from "./productos-service.js";
+
+const productosService = new ProductosService();
+
+async function getProducts() {
+  const productos = await productosService.getProductos();
+  productos.forEach((p) => showProduct(p));
+}
+
+getProducts();
 
 const form = document.querySelector("#formProduct");
 const imgPreview = document.querySelector("#imgPreview");
@@ -38,22 +45,20 @@ function showProduct(product) {
   btnDelete.append("X");
   btnDelete.dataset.id = product.id;
   tdDelete.append(btnDelete);
-  
+
   btnDelete.addEventListener("click", deleteProduct);
 
   tr.append(tdImage, tdDesc, tdPrice, tdAvail, tdDelete);
   tbody.append(tr);
 }
 
-function deleteProduct() {
-  fetch(
-    `https://api.fullstackpro.es/products-example/products/${this.dataset.id}`,
-    {
-      method: "DELETE",
-    }
-  ).then((resp) => {
-    if (resp.ok) this.closest("tr").remove();
-  });
+async function deleteProduct() {
+  try {
+    await productosService.delete(this.dataset.id);
+    this.closest("tr").remove();
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 form.fileName.addEventListener("change", (e) => {
@@ -67,7 +72,7 @@ form.fileName.addEventListener("change", (e) => {
   });
 });
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const product = {
@@ -76,15 +81,9 @@ form.addEventListener("submit", (e) => {
     imageUrl: imgPreview.src,
   };
 
-  fetch("https://api.fullstackpro.es/products-example/products", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(product),
-  })
-    .then((resp) => resp.json())
-    .then((json) => {
-      showProduct(json.product);
-      form.reset();
-      imgPreview.src = "";
-    });
+  const productInsert = await productosService.add(product); 
+
+  showProduct(productInsert);
+  form.reset();
+  imgPreview.src = "";
 });
