@@ -1,5 +1,5 @@
-import { Http } from './http.js';
-import { SERVER } from './constants.js';
+import { Http } from "./http.js";
+import { SERVER } from "./constants.js";
 
 export class ProductosService {
   #http = new Http();
@@ -15,7 +15,7 @@ export class ProductosService {
   }
 
   async update(producto) {
-    const resp = await this.#http.put(`${SERVER}/products/${producto.id}`, product);
+    const resp = await this.#http.put(`${SERVER}/products/${producto.id}`, producto);
     return resp.product;
   }
 

@@ -1,4 +1,5 @@
 import { ProductosService } from "./productos-service.js";
+import dayjs from "dayjs";
 
 const productosService = new ProductosService();
 
@@ -16,11 +17,11 @@ const priceFormatter = new Intl.NumberFormat("es-ES", {
   style: "currency",
   currency: "EUR",
 });
-const dateFormatter = new Intl.DateTimeFormat("es-ES", {
-  day: "2-digit",
-  month: "2-digit",
-  year: "numeric",
-});
+// const dateFormatter = new Intl.DateTimeFormat("es-ES", {
+//   day: "2-digit",
+//   month: "2-digit",
+//   year: "numeric",
+// });
 
 function showProduct(product) {
   const tr = document.createElement("tr");
@@ -37,7 +38,7 @@ function showProduct(product) {
   tdPrice.append(priceFormatter.format(product.price));
 
   const tdAvail = document.createElement("td");
-  tdAvail.append(dateFormatter.format(new Date(product.available)));
+  tdAvail.append(dayjs(product.available).format("DD/MM/YYYY"));
 
   const tdDelete = document.createElement("td");
   const btnDelete = document.createElement("button");
@@ -61,13 +62,13 @@ async function deleteProduct() {
   }
 }
 
-form.fileName.addEventListener("change", (e) => {
+form.fileName.addEventListener("change", () => {
   const file = form.fileName.files[0];
   if (!file) return;
 
   const fileReader = new FileReader();
   fileReader.readAsDataURL(file);
-  fileReader.addEventListener("load", (e) => {
+  fileReader.addEventListener("load", () => {
     imgPreview.src = fileReader.result;
   });
 });
@@ -81,7 +82,7 @@ form.addEventListener("submit", async (e) => {
     imageUrl: imgPreview.src,
   };
 
-  const productInsert = await productosService.add(product); 
+  const productInsert = await productosService.add(product);
 
   showProduct(productInsert);
   form.reset();
