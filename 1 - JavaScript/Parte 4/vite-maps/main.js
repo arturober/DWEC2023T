@@ -25,11 +25,12 @@ function getLocation() {
 }
 
 const imgMap = document.getElementById("imgMap");
-const API_KEY = "An8JNymYeoGzMUqXfVJlMm_9CLeMcpx_5NB0N1G9cUEUxIadv7XX5zVc008au1N1";
+const API_KEY =
+  "An8JNymYeoGzMUqXfVJlMm_9CLeMcpx_5NB0N1G9cUEUxIadv7XX5zVc008au1N1";
 
 function showStaticMap(coords) {
   const latlon = coords.latitude + "," + coords.longitude;
-  
+
   const imgUrl = `https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/${latlon}/15?mapSize=600,300&pp=${latlon};66&mapLayer=Basemap,Buildings&key=${API_KEY}`;
   imgMap.src = imgUrl;
 }
@@ -41,15 +42,44 @@ function loadBingAPI() {
   document.body.append(script);
 }
 
+function createMarker(map, { latitude, longitude }, title, color = "blue") {
+  const pin = new Microsoft.Maps.Pushpin(
+    new Microsoft.Maps.Location(latitude, longitude),
+    { title, color }
+  );
+  map.entities.push(pin);
+  return pin;
+}
+
 async function showMap() {
-  let coords = await getLocation();
+  const coords = await getLocation();
+  const center = new Microsoft.Maps.Location(coords.latitude, coords.longitude);
+
   showStaticMap(coords);
 
-  new window.Microsoft.Maps.Map(document.getElementById('map'), {
+  const map = new window.Microsoft.Maps.Map(document.getElementById("map"), {
     credentials: API_KEY,
-      center: new Microsoft.Maps.Location(coords.latitude, coords.longitude),
-      mapTypeId: Microsoft.Maps.MapTypeId.road,
-      zoom: 17
+    center: center,
+    mapTypeId: Microsoft.Maps.MapTypeId.road,
+    zoom: 17,
+  });
+
+  const pin = createMarker(map, center, "", "red");
+
+  Microsoft.Maps.Events.addHandler(map, "click", (e) => {
+    createMarker(map, e.location, "", "green");
+    // pin.setLocation(e.location); // Mueve el marcador a ese punto
+    // map.setView({center: e.location}); // Centra el mapa en el punto
+  });
+
+  Microsoft.Maps.loadModule("Microsoft.Maps.AutoSuggest", () => {
+    const manager = new Microsoft.Maps.AutosuggestManager({ map, businessSuggestions: true });
+    manager.attachAutosuggest("#searchBox", "#searchBoxContainer", (result) => {
+      console.log(result);
+      createMarker(map, result.location, "", "red");
+      map.setView({ center: result.location });
+      // Las coordenadas están en result.location.latitude y result.location.longitude
+    });
   });
 }
 
