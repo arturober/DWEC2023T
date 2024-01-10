@@ -1,0 +1,11 @@
+<td>
+  @if(showImage) {
+  <img [src]="product.imageUrl" alt="" />
+  }
+</td>
+<td>{{ product.description }}</td>
+<td>{{ product.price | currency : "EUR" }}</td>
+<td>{{ product.available | date : "dd/MM/yyyy" }}</td>
+<td>
+  <button class="btn btn-danger" (click)="deleteProduct()">X</button>
+</td>

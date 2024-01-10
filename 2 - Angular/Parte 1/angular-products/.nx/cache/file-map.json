@@ -53,19 +53,19 @@
       },
       {
         "file": ".nx/cache/file-map.json",
-        "hash": "16970060233363065692"
+        "hash": "11377632835389888790"
       },
       {
         "file": ".nx/cache/lockfile.hash",
-        "hash": "1229018070164067582"
+        "hash": "17963741826036651620"
       },
       {
         "file": ".nx/cache/parsed-lock-file.json",
-        "hash": "8631020829433045478"
+        "hash": "5633021893204294443"
       },
       {
         "file": ".nx/cache/project-graph.json",
-        "hash": "15026318134023016714"
+        "hash": "1917646189235404004"
       },
       {
         "file": ".vscode/extensions.json",
@@ -85,15 +85,15 @@
       },
       {
         "file": "angular.json",
-        "hash": "605887284992013910"
+        "hash": "7661816816460153110"
       },
       {
         "file": "package-lock.json",
-        "hash": "82318385084568642"
+        "hash": "15098394520000628957"
       },
       {
         "file": "package.json",
-        "hash": "10671750533734036141"
+        "hash": "13276688166944939062"
       },
       {
         "file": "src/app/app.component.css",
@@ -116,20 +116,64 @@
         "hash": "12397496131277534773"
       },
       {
+        "file": "src/app/interfaces/product.ts",
+        "hash": "12438642329844650608"
+      },
+      {
         "file": "src/app/products-page/products-page.component.css",
-        "hash": "3244421341483603138"
+        "hash": "15363962217900008631"
       },
       {
         "file": "src/app/products-page/products-page.component.html",
-        "hash": "10612675753741279227"
+        "hash": "16527052060058389742"
       },
       {
         "file": "src/app/products-page/products-page.component.ts",
-        "hash": "15962229915748939987"
+        "hash": "12091382912280249060"
       },
       {
         "file": "src/assets/.gitkeep",
         "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/assets/chicken.jpg",
+        "hash": "4784925245093839282"
+      },
+      {
+        "file": "src/assets/dinosaur.jpg",
+        "hash": "12802278282367696995"
+      },
+      {
+        "file": "src/assets/hand.jpg",
+        "hash": "12088143736475976898"
+      },
+      {
+        "file": "src/assets/microphone.jpg",
+        "hash": "14706071844510223436"
+      },
+      {
+        "file": "src/assets/minigolf.jpg",
+        "hash": "13556792740223326535"
+      },
+      {
+        "file": "src/assets/pillow.jpg",
+        "hash": "4894619385994886835"
+      },
+      {
+        "file": "src/assets/running bike.jpg",
+        "hash": "16459815875909547981"
+      },
+      {
+        "file": "src/assets/soap.jpg",
+        "hash": "2800791148240365537"
+      },
+      {
+        "file": "src/assets/suitcase.jpg",
+        "hash": "15491876855184671261"
+      },
+      {
+        "file": "src/assets/tirolina-con-asiento.jpg",
+        "hash": "17287888764162886114"
       },
       {
         "file": "src/favicon.ico",
