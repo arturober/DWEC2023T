@@ -1,7 +1,4 @@
-td {
-  vertical-align: middle;
-}
-
-td:first-child img {
+div:first-child img {
   height: 40px;
 }
+

@@ -10,6 +10,7 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
+    "@fortawesome/fontawesome-free": "^6.5.1",
     "bootstrap": "^5.3.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -53,7 +54,7 @@
       },
       {
         "file": ".nx/cache/file-map.json",
-        "hash": "16981938895990484256"
+        "hash": "17370441960604606113"
       },
       {
         "file": ".nx/cache/lockfile.hash",
@@ -85,7 +86,7 @@
       },
       {
         "file": "angular.json",
-        "hash": "7661816816460153110"
+        "hash": "6856836646698144997"
       },
       {
         "file": "package-lock.json",
@@ -101,7 +102,7 @@
       },
       {
         "file": "src/app/app.component.html",
-        "hash": "15124186660527464375"
+        "hash": "14916502610884913377"
       },
       {
         "file": "src/app/app.component.ts",
@@ -120,16 +121,32 @@
         "hash": "12438642329844650608"
       },
       {
+        "file": "src/app/pipes/product-filter.pipe.ts",
+        "hash": "13887539676391681374"
+      },
+      {
+        "file": "src/app/product-item/product-item.component.css",
+        "hash": "10013693519096186249"
+      },
+      {
+        "file": "src/app/product-item/product-item.component.html",
+        "hash": "9131644075018992833"
+      },
+      {
+        "file": "src/app/product-item/product-item.component.ts",
+        "hash": "7873978828000587265"
+      },
+      {
         "file": "src/app/products-page/products-page.component.css",
-        "hash": "15363962217900008631"
+        "hash": "7339602294446023384"
       },
       {
         "file": "src/app/products-page/products-page.component.html",
-        "hash": "6460006822774100054"
+        "hash": "11167257686034003882"
       },
       {
         "file": "src/app/products-page/products-page.component.ts",
-        "hash": "17519545881958548027"
+        "hash": "10197998411054363716"
       },
       {
         "file": "src/assets/.gitkeep",

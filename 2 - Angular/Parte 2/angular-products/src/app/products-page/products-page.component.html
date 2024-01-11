@@ -102,36 +102,30 @@
     </form>
 
     @if (products.length) {
-    <div class="table-responsive">
-      <table class="table m-0">
-        <thead>
-          <tr>
-            <th>
-              <button
-                class="btn"
-                (click)="showImage = !showImage"
-                [ngClass]="{
-                  'btn-danger': showImage,
-                  'btn-success': !showImage
-                }"
-              >
-                {{ showImage ? "Hide" : "Show" }} Images
-              </button>
-            </th>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Disponible</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (product of products | productFilter:search; track product.id;
-          let even = $even) {
-            <tr product-item [ngClass]="{ even: even }"></tr>
-          }
-        </tbody>
-      </table>
-    </div>
+      <div class="row headers g-0">
+        <div class="col-2">
+          <button
+            class="btn btn-sm"
+            [ngClass]="{
+                    'btn-danger': this.showImage,
+                    'btn-primary': !this.showImage,
+                  }"
+            (click)="showImage = !showImage"
+          >
+            {{ showImage ? "Hide" : "Show" }} images
+          </button>
+        </div>
+        <div class="col-4 my-auto">Descripción</div>
+        <div class="col my-auto">Precio</div>
+        <div class="col my-auto">Disponible</div>
+        <div class="col my-auto">Puntuación</div>
+        <div class="col-auto p-2">
+          <div style="width: 25px;"></div>
+        </div>
+      </div>
+      @for (product of products | productFilter:search; track product.id) {
+        <product-item [product]="product" (deleted)="deleteProduct(product)" class="row g-0" />
+      }
     } @else {
     <p class="p-3">No hay productos disponibles</p>
     }

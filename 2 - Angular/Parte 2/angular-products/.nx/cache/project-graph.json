@@ -1873,6 +1873,15 @@
         "hash": "sha512-+KpH+QxZU7O4675t3mnkQKcZZg56u+K/Ct2K+N2AZYNVK8kyeo/bI18tI8aPm3tvNNRyTWfj6s5tnGNlcbQRsA=="
       }
     },
+    "npm:@fortawesome/fontawesome-free": {
+      "type": "npm",
+      "name": "npm:@fortawesome/fontawesome-free",
+      "data": {
+        "version": "6.5.1",
+        "packageName": "@fortawesome/fontawesome-free",
+        "hash": "sha512-CNy5vSwN3fsUStPRLX7fUYojyuzoEMSXPl7zSLJ8TgtRfjv24LOnOWKT2zYwaHZCJGkdyRnTmstR0P+Ah503Gw=="
+      }
+    },
     "npm:@humanwhocodes/config-array": {
       "type": "npm",
       "name": "npm:@humanwhocodes/config-array",
