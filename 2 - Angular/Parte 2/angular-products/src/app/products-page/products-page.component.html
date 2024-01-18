@@ -1,81 +1,4 @@
-<div class="card mb-4">
-  <div class="card-header bg-success text-white">Add product</div>
-  <div class="card-body">
-    <form (ngSubmit)="addProduct()">
-      <div class="mb-3 row">
-        <label class="col-sm-2 col-form-label text-sm-end" for="description"
-          >Description</label
-        >
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            name="description"
-            id="description"
-            [(ngModel)]="newProduct.description"
-          />
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label class="col-sm-2 col-form-label text-sm-end" for="price"
-          >Price</label
-        >
-        <div class="col-sm-10">
-          <input
-            type="number"
-            class="form-control"
-            name="price"
-            id="price"
-            [(ngModel)]="newProduct.price"
-          />
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label class="col-sm-2 col-form-label text-sm-end" for="available"
-          >Available</label
-        >
-        <div class="col-sm-10">
-          <input
-            type="date"
-            class="form-control"
-            name="available"
-            id="available"
-            [(ngModel)]="newProduct.available"
-          />
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label class="col-sm-2 col-form-label text-sm-end" for="image">
-          Image</label
-        >
-        <div class="col-sm-10">
-          <input
-            type="file"
-            class="form-control"
-            accept="image/*"
-            id="image"
-            (change)="changeImage($event)"
-            name="fileName"
-            [(ngModel)]="fileName"
-          />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-10 offset-sm-2">
-          <img class="product-img" alt="" [src]="newProduct.imageUrl" />
-        </div>
-      </div>
-
-      <div class="mb-3 row">
-        <div class="offset-sm-2 col-sm-10">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-{{ newProduct | json }}
+<product-form (add)="addProduct($event)"></product-form>
 
 <div class="card">
   <div class="card-header bg-primary text-white">
@@ -84,9 +7,7 @@
   <div class="card-block">
     <form class="form p-3">
       <div class="row">
-        <label class="col-form-label col-sm-2 text-sm-end" for="filterDesc">
-          Filter:
-        </label>
+        <label class="col-form-label col-sm-2 text-sm-end" for="filterDesc"> Filter: </label>
         <div class="col-sm-5">
           <input
             type="text"
@@ -102,31 +23,30 @@
     </form>
 
     @if (products.length) {
-      <div class="row headers g-0">
-        <div class="col-2">
-          <button
-            class="btn btn-sm"
-            [ngClass]="{
+    <div class="row headers g-0">
+      <div class="col-2">
+        <button
+          class="btn btn-sm"
+          [ngClass]="{
                     'btn-danger': this.showImage,
                     'btn-primary': !this.showImage,
                   }"
-            (click)="showImage = !showImage"
-          >
-            {{ showImage ? "Hide" : "Show" }} images
-          </button>
-        </div>
-        <div class="col-4 my-auto">Descripción</div>
-        <div class="col my-auto">Precio</div>
-        <div class="col my-auto">Disponible</div>
-        <div class="col my-auto">Puntuación</div>
-        <div class="col-auto p-2">
-          <div style="width: 25px;"></div>
-        </div>
+          (click)="showImage = !showImage"
+        >
+          {{ showImage ? "Hide" : "Show" }} images
+        </button>
       </div>
-      @for (product of products | productFilter:search; track product.id) {
-        <product-item [product]="product" (deleted)="deleteProduct(product)" class="row g-0" />
-      }
-    } @else {
+      <div class="col-4 my-auto">Descripción</div>
+      <div class="col my-auto">Precio</div>
+      <div class="col my-auto">Disponible</div>
+      <div class="col my-auto">Puntuación</div>
+      <div class="col-auto p-2">
+        <div style="width: 25px"></div>
+      </div>
+    </div>
+    @for (product of products | productFilter:search; track product.id) {
+    <product-item [product]="product" (deleted)="deleteProduct(product)" class="row g-0" />
+    } } @else {
     <p class="p-3">No hay productos disponibles</p>
     }
   </div>

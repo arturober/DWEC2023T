@@ -14,6 +14,7 @@ export class ProductItemComponent {
   showImage = true;
   @Input({required: true}) product!: Product;
   @Output() deleted = new EventEmitter<void>();
+  selected = false;
 
   deleteProduct() {
     this.deleted.emit();

@@ -54,19 +54,55 @@
       },
       {
         "file": ".nx/cache/file-map.json",
-        "hash": "17370441960604606113"
+        "hash": "16490380278266523047"
       },
       {
         "file": ".nx/cache/lockfile.hash",
-        "hash": "17963741826036651620"
+        "hash": "14111524102583005336"
+      },
+      {
+        "file": ".nx/cache/nx-console-project-graph/project-graph.html",
+        "hash": "17036869540637447991"
+      },
+      {
+        "file": ".nx/cache/nx-console-project-graph/static/3rdpartylicenses.txt",
+        "hash": "5667550289807473445"
+      },
+      {
+        "file": ".nx/cache/nx-console-project-graph/static/environment.js",
+        "hash": "5018250891076049163"
+      },
+      {
+        "file": ".nx/cache/nx-console-project-graph/static/favicon.ico",
+        "hash": "9303420814833116677"
+      },
+      {
+        "file": ".nx/cache/nx-console-project-graph/static/main.js",
+        "hash": "11366588937091843483"
+      },
+      {
+        "file": ".nx/cache/nx-console-project-graph/static/polyfills.js",
+        "hash": "2110773196768975388"
+      },
+      {
+        "file": ".nx/cache/nx-console-project-graph/static/runtime.js",
+        "hash": "9652903316845995179"
+      },
+      {
+        "file": ".nx/cache/nx-console-project-graph/static/styles.css",
+        "hash": "5562174198026097626"
+      },
+      {
+        "file": ".nx/cache/nx-console-project-graph/static/styles.js",
+        "hash": "13596360365094399219"
       },
       {
         "file": ".nx/cache/parsed-lock-file.json",
-        "hash": "5633021893204294443"
+        "hash": "6182485014537872017"
       },
       {
         "file": ".nx/cache/project-graph.json",
-        "hash": "1917646189235404004"
+        "hash": "2200174298551268177"
       },
       {
         "file": ".vscode/extensions.json",
@@ -86,15 +122,15 @@
       },
       {
         "file": "angular.json",
-        "hash": "6856836646698144997"
+        "hash": "9917824827092453711"
       },
       {
         "file": "package-lock.json",
-        "hash": "15098394520000628957"
+        "hash": "11047720891528333036"
       },
       {
         "file": "package.json",
-        "hash": "13276688166944939062"
+        "hash": "9338342066832981562"
       },
       {
         "file": "src/app/app.component.css",
@@ -126,27 +162,39 @@
       },
       {
         "file": "src/app/product-item/product-item.component.css",
-        "hash": "10013693519096186249"
+        "hash": "14104552179926854336"
       },
       {
         "file": "src/app/product-item/product-item.component.html",
-        "hash": "9131644075018992833"
+        "hash": "16275530394073265329"
       },
       {
         "file": "src/app/product-item/product-item.component.ts",
-        "hash": "7873978828000587265"
+        "hash": "18393792633200338679"
       },
       {
         "file": "src/app/products-page/products-page.component.css",
-        "hash": "7339602294446023384"
+        "hash": "8891823093888230787"
       },
       {
         "file": "src/app/products-page/products-page.component.html",
-        "hash": "11167257686034003882"
+        "hash": "15909258695061785404"
       },
       {
         "file": "src/app/products-page/products-page.component.ts",
         "hash": "10197998411054363716"
+      },
+      {
+        "file": "src/app/star-rating/star-rating.component.css",
+        "hash": "15023590486734932180"
+      },
+      {
+        "file": "src/app/star-rating/star-rating.component.html",
+        "hash": "12789268406404932341"
+      },
+      {
+        "file": "src/app/star-rating/star-rating.component.ts",
+        "hash": "5886459134600656335"
       },
       {
         "file": "src/assets/.gitkeep",

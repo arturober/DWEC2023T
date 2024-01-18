@@ -4,25 +4,28 @@ import { FormsModule } from '@angular/forms';
 import { Product } from '../interfaces/product';
 import { ProductFilterPipe } from '../pipes/product-filter.pipe';
 import { ProductItemComponent } from '../product-item/product-item.component';
+import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({
   selector: 'products-page',
   standalone: true,
-  imports: [NgClass, JsonPipe, ProductItemComponent, FormsModule, CurrencyPipe, DatePipe, ProductFilterPipe],
+  imports: [
+    NgClass,
+    JsonPipe,
+    ProductItemComponent,
+    FormsModule,
+    CurrencyPipe,
+    DatePipe,
+    ProductFilterPipe,
+    ProductFormComponent,
+  ],
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.css',
 })
 export class ProductsPageComponent {
   title = 'Mi lista de productos';
   showImage = true;
-  fileName = '';
   search = '';
-
-  newProduct!: Product;
-
-  constructor() {
-    this.resetForm();
-  }
 
   products: Product[] = [
     {
@@ -43,34 +46,12 @@ export class ProductsPageComponent {
     },
   ];
 
-  changeImage(event: Event) {
-    const fileInput = event.target as HTMLInputElement;
-    if (!fileInput.files?.length) return;
-    const reader = new FileReader();
-    reader.readAsDataURL(fileInput.files[0]);
-    reader.addEventListener('loadend', () => {
-      this.newProduct.imageUrl = reader.result as string;
-    });
-  }
-
-  addProduct() {
-    this.newProduct.id = Math.max(...this.products.map((p) => p.id!)) + 1;
-    this.products = [...this.products, this.newProduct];
-    this.resetForm();
-  }
-
-  resetForm() {
-    this.newProduct = {
-      description: '',
-      price: 0,
-      available: '',
-      imageUrl: '',
-      rating: 1,
-    };
-    this.fileName = '';
+  addProduct(product: Product) {
+    product.id = Math.max(...this.products.map((p) => p.id!)) + 1;
+    this.products = [...this.products, product];
   }
 
   deleteProduct(product: Product) {
-    this.products = this.products.filter(p => p !== product);
+    this.products = this.products.filter((p) => p !== product);
   }
 }
