@@ -1,0 +1,52 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    {{ title }}
+  </div>
+  <div class="card-block">
+    <form class="form p-3">
+      <div class="row">
+        <label class="col-form-label col-sm-2 text-sm-end" for="filterDesc"> Filter: </label>
+        <div class="col-sm-5">
+          <input
+            type="text"
+            [(ngModel)]="search"
+            class="form-control"
+            name="filterDesc"
+            id="filterDesc"
+            placeholder="Filter..."
+          />
+        </div>
+        <span class="col-form-label col-sm-5"> Filtered by: {{ search }} </span>
+      </div>
+    </form>
+
+    @if (products.length) {
+    <div class="row headers g-0">
+      <div class="col-2">
+        <button
+          class="btn btn-sm"
+          [ngClass]="{
+                    'btn-danger': this.showImage,
+                    'btn-primary': !this.showImage,
+                  }"
+          (click)="showImage = !showImage"
+        >
+          {{ showImage ? "Hide" : "Show" }} images
+        </button>
+      </div>
+      <div class="col-4 my-auto">Descripción</div>
+      <div class="col my-auto">Precio</div>
+      <div class="col my-auto">Disponible</div>
+      <div class="col my-auto">Puntuación</div>
+      <div class="col-auto p-2">
+        <div style="width: 25px"></div>
+      </div>
+    </div>
+    @for (product of products | productFilter:search; track product.id) {
+    <product-item [product]="product" (deleted)="deleteProduct(product)" class="row g-0" />
+    }
+  } @else {
+    <p class="p-3">No hay productos disponibles</p>
+    }
+  </div>
+</div>
