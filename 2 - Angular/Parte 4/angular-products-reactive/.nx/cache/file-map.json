@@ -54,7 +54,7 @@
       },
       {
         "file": ".nx/cache/file-map.json",
-        "hash": "16261096472551831188"
+        "hash": "9476184291300936214"
       },
       {
         "file": ".nx/cache/lockfile.hash",
@@ -198,11 +198,11 @@
       },
       {
         "file": "src/app/products/product-form/product-form.component.html",
-        "hash": "1688789197175657115"
+        "hash": "11042374388916887048"
       },
       {
         "file": "src/app/products/product-form/product-form.component.ts",
-        "hash": "17211193642803634414"
+        "hash": "9822208259160252720"
       },
       {
         "file": "src/app/products/product-item/product-item.component.css",
@@ -214,7 +214,7 @@
       },
       {
         "file": "src/app/products/product-item/product-item.component.ts",
-        "hash": "9544093619733026766"
+        "hash": "1073803652472471307"
       },
       {
         "file": "src/app/products/products-page/products-page.component.css",
@@ -251,10 +251,6 @@
       {
         "file": "src/app/star-rating/star-rating.component.ts",
         "hash": "10864239599112413628"
-      },
-      {
-        "file": "src/app/validators/min-date.directive.ts",
-        "hash": "8970679038480913768"
       },
       {
         "file": "src/app/welcome/welcome.component.css",

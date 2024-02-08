@@ -1,9 +1,9 @@
 import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { StarRatingComponent } from '../../star-rating/star-rating.component';
 import { Product } from '../interfaces/product';
+import { StarRatingComponent } from '../../star-rating/star-rating.component';
 import { ProductsService } from '../services/products.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'product-item',
@@ -25,6 +25,7 @@ export class ProductItemComponent {
       next: () => this.deleted.emit(),
       error: () => console.error("Error deleting product!")
     })
+
   }
 
   changeRating(rating: number) {

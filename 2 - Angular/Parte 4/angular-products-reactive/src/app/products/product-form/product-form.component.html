@@ -1,0 +1,87 @@
+<div class="card mb-4">
+  <div class="card-header bg-success text-white">Add product</div>
+  <div class="card-body">
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label text-sm-end" for="description"
+          >Description</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="description"
+            id="description"
+            [ngClass]="{
+              'is-valid': description.touched && description.valid,
+              'is-invalid': description.touched && !description.valid
+            }"
+          />
+          @if(description.errors?.['required']) {
+            <div class="invalid-feedback">Description cannot be empty</div>
+            } @if(description.errors?.['minlength']) {
+            <div class="invalid-feedback">
+              You must enter at least
+              {{description.errors?.['minlength'].requiredLength - description.errors?.['minlength'].actualLength}}
+              characters more
+            </div>
+            }
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label text-sm-end" for="price"
+          >Price</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="number"
+            class="form-control"
+            formControlName="price"
+            id="price"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label text-sm-end" for="available"
+          >Available</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="date"
+            class="form-control"
+            formControlName="available"
+            id="available"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label text-sm-end" for="image">
+          Image</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="file"
+            class="form-control"
+            accept="image/*"
+            id="image"
+            (change)="changeImage($event)"
+            formControlName="imageUrl"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10 offset-sm-2">
+          <img class="product-img" alt="" [src]="imageBase64" />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <div class="offset-sm-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{{productForm.value | json}}

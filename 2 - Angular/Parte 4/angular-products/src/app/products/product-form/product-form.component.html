@@ -70,7 +70,7 @@
             name="available"
             id="available"
             required
-            minDate="2024-01-01"
+            [minDate]="today"
             [(ngModel)]="newProduct.available"
             #availModel="ngModel"
             [ngClass]="{
@@ -82,7 +82,7 @@
           <div class="invalid-feedback">Date cannot be empty</div>
           }
           @if(availModel.errors?.['minDate']) {
-          <div class="invalid-feedback">Date must be greater than 01/01/2024</div>
+          <div class="invalid-feedback">Date must be greater than {{today|date:'dd/MM/yyyy'}}</div>
           }
         </div>
       </div>
