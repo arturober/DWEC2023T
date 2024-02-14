@@ -1,15 +1,16 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
-import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CanComponentDeactivate } from '../../interfaces/can-component-deactivate';
 import { Product } from '../interfaces/product';
 import { ProductsService } from '../services/products.service';
-import { JsonPipe, NgClass } from '@angular/common';
+import { DatePipe, JsonPipe, NgClass } from '@angular/common';
+import { minDateValidator } from '../../validators/min-date';
 
 @Component({
   selector: 'product-form',
   standalone: true,
-  imports: [ReactiveFormsModule, JsonPipe, NgClass],
+  imports: [ReactiveFormsModule, JsonPipe, DatePipe, NgClass],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
@@ -22,13 +23,18 @@ export class ProductFormComponent implements  CanComponentDeactivate {
 
   imageBase64 = '';
   saved = false;
+  today = new Date().toISOString().slice(0,10);
 
   description = this.#fb.control('', [Validators.required, Validators.minLength(5)]);
+  price = this.#fb.control(0, [Validators.required, Validators.min(0.01)]);
+  available = this.#fb.control('', [Validators.required, minDateValidator(this.today)]);
+  imageUrl = this.#fb.control('', [Validators.required]);
+
   productForm = this.#fb.group({
     description: this.description,
-    price: [0, [Validators.required, Validators.min(0.1)]],
-    available: ['', [Validators.required]],
-    imageUrl: ['', [Validators.required]],
+    price:  this.price,
+    available: this.available,
+    imageUrl: this.imageUrl,
   });
 
   canDeactivate() {
@@ -62,5 +68,12 @@ export class ProductFormComponent implements  CanComponentDeactivate {
 
   resetForm() {
     this.productForm.reset();
+  }
+
+  validClasses(formControl: FormControl, validClass: string, errorClass: string) {
+    return {
+      [validClass]: formControl.touched && formControl.valid,
+      [errorClass]: formControl.touched && formControl.invalid,
+    };
   }
 }

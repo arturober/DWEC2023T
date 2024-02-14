@@ -12,20 +12,17 @@
             class="form-control"
             formControlName="description"
             id="description"
-            [ngClass]="{
-              'is-valid': description.touched && description.valid,
-              'is-invalid': description.touched && !description.valid
-            }"
+            [ngClass]="validClasses(description,'is-valid', 'is-invalid')"
           />
           @if(description.errors?.['required']) {
             <div class="invalid-feedback">Description cannot be empty</div>
-            } @if(description.errors?.['minlength']) {
+          } @if(description.errors?.['minlength']) {
             <div class="invalid-feedback">
               You must enter at least
               {{description.errors?.['minlength'].requiredLength - description.errors?.['minlength'].actualLength}}
               characters more
             </div>
-            }
+          }
         </div>
       </div>
       <div class="mb-3 row">
@@ -37,8 +34,17 @@
             type="number"
             class="form-control"
             formControlName="price"
+            step="0.01"
             id="price"
+            [ngClass]="validClasses(price,'is-valid', 'is-invalid')"
           />
+          @if(price.errors?.['required']) {
+            <div class="invalid-feedback">Price cannot be empty</div>
+          } @if(price.errors?.['min']) {
+            <div class="invalid-feedback">
+              Price must be greater than 0
+            </div>
+          }
         </div>
       </div>
       <div class="mb-3 row">
@@ -51,7 +57,14 @@
             class="form-control"
             formControlName="available"
             id="available"
+            [ngClass]="validClasses(available,'is-valid', 'is-invalid')"
           />
+          @if(available.errors?.['required']) {
+            <div class="invalid-feedback">Date is mandatory</div>
+          }
+          @if(available.errors?.['minDate']) {
+            <div class="invalid-feedback">Date must be greater than {{today|date:'dd/MM/yyyy'}}</div>
+          }
         </div>
       </div>
       <div class="mb-3 row">
@@ -66,7 +79,11 @@
             id="image"
             (change)="changeImage($event)"
             formControlName="imageUrl"
+            [ngClass]="validClasses(imageUrl,'is-valid', 'is-invalid')"
           />
+          @if(imageUrl.errors?.['required']) {
+            <div class="invalid-feedback">Image is mandatory</div>
+          }
         </div>
       </div>
       <div class="row">

@@ -54,7 +54,7 @@
       },
       {
         "file": ".nx/cache/file-map.json",
-        "hash": "9476184291300936214"
+        "hash": "15233817317491761741"
       },
       {
         "file": ".nx/cache/lockfile.hash",
@@ -198,11 +198,11 @@
       },
       {
         "file": "src/app/products/product-form/product-form.component.html",
-        "hash": "11042374388916887048"
+        "hash": "18029543988241852944"
       },
       {
         "file": "src/app/products/product-form/product-form.component.ts",
-        "hash": "9822208259160252720"
+        "hash": "18213765124745723702"
       },
       {
         "file": "src/app/products/product-item/product-item.component.css",
