@@ -20,7 +20,7 @@
       </div>
     </form>
 
-    @if (products.length) {
+    @if (products().length) {
     <div class="row headers g-0">
       <div class="col-2">
         <button
@@ -42,7 +42,7 @@
         <div style="width: 25px"></div>
       </div>
     </div>
-    @for (product of products() | productFilter:search(); track product.id) {
+    @for (product of filteredProducts(); track product.id) {
     <product-item [product]="product" (deleted)="deleteProduct(product)" class="row g-0" />
     }
   } @else {

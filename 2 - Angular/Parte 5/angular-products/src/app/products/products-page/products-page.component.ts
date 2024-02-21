@@ -1,5 +1,14 @@
 import { CurrencyPipe, DatePipe, JsonPipe, NgClass } from '@angular/common';
-import { Component, OnInit, WritableSignal, inject, signal } from '@angular/core';
+import {
+  Component,
+  Injector,
+  OnInit,
+  WritableSignal,
+  computed,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../interfaces/product';
 import { ProductFilterPipe } from '../pipes/product-filter.pipe';
@@ -28,20 +37,33 @@ export class ProductsPageComponent implements OnInit {
 
   products: WritableSignal<Product[]> = signal([]);
 
-  #productsService = inject(ProductsService);
+  filteredProducts = computed(() =>
+    this.products().filter((p) =>
+      p.description.toLowerCase().includes(this.search().toLowerCase())
+    )
+  );
 
-  ngOnInit(): void {
-    this.#productsService.getProducts().subscribe(
-      products => this.products.set(products)
+  #productsService = inject(ProductsService);
+  #injector = inject(Injector);
+
+  constructor() {
+    effect(() =>
+      console.log(`Products filtered: ${this.filteredProducts().length}`)
     );
   }
 
+  ngOnInit(): void {
+    this.#productsService
+      .getProducts()
+      .subscribe((products) => this.products.set(products));
+  }
+
   deleteProduct(product: Product) {
-    this.products.update(p => p.filter((p) => p !== product));
+    this.products.update((p) => p.filter((p) => p !== product));
   }
 
   toggleImage() {
     // this.showImage.set(!this.showImage());
-    this.showImage.update(v => !v);
+    this.showImage.update((v) => !v);
   }
 }

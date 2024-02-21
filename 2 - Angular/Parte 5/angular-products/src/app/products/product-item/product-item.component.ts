@@ -1,5 +1,5 @@
 import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Output, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { StarRatingComponent } from '../../star-rating/star-rating.component';
 import { Product } from '../interfaces/product';
@@ -14,26 +14,27 @@ import { ProductsService } from '../services/products.service';
 })
 export class ProductItemComponent {
   showImage = true;
-  @Input({required: true}) product!: Product;
+  // @Input({required: true}) product!: Product;
+  product = input.required<Product>(); // Input como signal!
   @Output() deleted = new EventEmitter<void>();
   selected = false;
 
   #productsService = inject(ProductsService);
 
   deleteProduct() {
-    this.#productsService.deleteProduct(this.product.id!).subscribe({
+    this.#productsService.deleteProduct(this.product().id!).subscribe({
       next: () => this.deleted.emit(),
       error: () => console.error("Error deleting product!")
     })
   }
 
   changeRating(rating: number) {
-    const oldRating = this.product.rating;
-    this.product.rating = rating;
+    const oldRating = this.product().rating;
+    this.product().rating = rating;
     this.#productsService
-    .changeRating(this.product.id!, rating)
+    .changeRating(this.product().id!, rating)
     .subscribe({
-      error: () => this.product.rating = oldRating
+      error: () => this.product().rating = oldRating
     });
   }
 }

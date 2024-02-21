@@ -7,6 +7,7 @@ import { Product } from '../interfaces/product';
 })
 export class ProductFilterPipe implements PipeTransform {
   transform(products: Product[] | null, search: string): Product[] | null {
+    console.log(products);
     if(!products) return null;
     return search ?
     products.filter((p) =>
