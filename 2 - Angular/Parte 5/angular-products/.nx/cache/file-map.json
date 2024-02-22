@@ -78,15 +78,15 @@
       },
       {
         "file": "angular.json",
-        "hash": "6856836646698144997"
+        "hash": "1818101525165478207"
       },
       {
         "file": "package-lock.json",
-        "hash": "8305870173622874462"
+        "hash": "9642150561211007788"
       },
       {
         "file": "package.json",
-        "hash": "5214634070803263838"
+        "hash": "6316030411677776200"
       },
       {
         "file": "src/app/app.component.css",
@@ -125,6 +125,18 @@
         "hash": "4813426186458140970"
       },
       {
+        "file": "src/app/modals/confirm-modal/confirm-modal.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/modals/confirm-modal/confirm-modal.component.html",
+        "hash": "7912225664166952856"
+      },
+      {
+        "file": "src/app/modals/confirm-modal/confirm-modal.component.ts",
+        "hash": "9861604198153438018"
+      },
+      {
         "file": "src/app/products/interfaces/product.ts",
         "hash": "12438642329844650608"
       },
@@ -158,7 +170,7 @@
       },
       {
         "file": "src/app/products/product-form/product-form.component.ts",
-        "hash": "17211193642803634414"
+        "hash": "1354001243896329268"
       },
       {
         "file": "src/app/products/product-item/product-item.component.css",
@@ -278,7 +290,7 @@
       },
       {
         "file": "src/main.ts",
-        "hash": "4927504514031276065"
+        "hash": "12949470481069101228"
       },
       {
         "file": "src/styles.css",
@@ -286,7 +298,7 @@
       },
       {
         "file": "tsconfig.app.json",
-        "hash": "17337579397915052279"
+        "hash": "1081049283653856346"
       },
       {
         "file": "tsconfig.json",
@@ -294,7 +306,7 @@
       },
       {
         "file": "tsconfig.spec.json",
-        "hash": "15575553540147145788"
+        "hash": "8544468366590402334"
       }
     ]
   }

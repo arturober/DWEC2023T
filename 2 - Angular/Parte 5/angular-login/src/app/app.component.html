@@ -1,0 +1,18 @@
+<div googleLogin class="btn"></div>
+
+@if(googleInfo) {
+  <img [src]="googleInfo.picture" alt="">
+  <p>{{googleInfo.name}}</p>
+  <p>{{googleInfo.email}}</p>
+}
+
+<button
+  fbLogin
+  [scopes]="['email', 'public_profile']"
+  class="btn btn-primary"
+  (loginOk)="loggedFacebook($event)"
+  (loginError)="showError($event)"
+>
+  <fa-icon [icon]="iconFacebook"></fa-icon>
+  Login con Facebook
+</button>
