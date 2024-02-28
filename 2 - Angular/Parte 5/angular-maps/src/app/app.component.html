@@ -1,0 +1,9 @@
+<div id="parentSearch">
+  <input type="text" name="search" id="search">
+</div>
+
+<bm-map [coords]="coordinates">
+  <bm-marker [coords]="coordinates" color="green"></bm-marker>
+  <bm-marker [coords]="{latitude: 37.23, longitude: -3}"></bm-marker>
+  <bm-autosuggest idContainer="parentSearch" idInput="search" (locationChanged)="moveMap($event)"></bm-autosuggest>
+</bm-map>
