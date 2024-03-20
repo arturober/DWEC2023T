@@ -2,10 +2,12 @@
   <div class="card-header bg-primary text-white">
     {{ title }}
   </div>
-  <div class="card-block">
+  <div class="card-block" [@animateList]="filteredProducts().length">
     <form class="form p-3">
       <div class="row">
-        <label class="col-form-label col-sm-2 text-sm-end" for="filterDesc"> Filter: </label>
+        <label class="col-form-label col-sm-2 text-sm-end" for="filterDesc">
+          Filter:
+        </label>
         <div class="col-sm-5">
           <input
             type="text"
@@ -16,7 +18,9 @@
             placeholder="Filter..."
           />
         </div>
-        <span class="col-form-label col-sm-5"> Filtered by: {{ search() }} </span>
+        <span class="col-form-label col-sm-5">
+          Filtered by: {{ search() }}
+        </span>
       </div>
     </form>
 
@@ -43,9 +47,14 @@
       </div>
     </div>
     @for (product of filteredProducts(); track product.id) {
-    <product-item [product]="product" (deleted)="deleteProduct(product)" class="row g-0" />
-    }
-  } @else {
+    <product-item
+      [@animateProduct]="!!product.selected"
+      [product]="product"
+      (deleted)="deleteProduct(product)"
+      class="row g-0"
+      (click)="toggleSelect(product)"
+    />
+    } } @else {
     <p class="p-3">No hay productos disponibles</p>
     }
   </div>

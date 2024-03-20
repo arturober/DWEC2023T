@@ -11,6 +11,7 @@ export const productRoutes: Routes = [
         (m) => m.ProductsPageComponent
       ),
     title: 'Product list | Angular Products',
+    data: { animation: 'productsPage' }
   },
   {
     path: 'add',
@@ -32,5 +33,6 @@ export const productRoutes: Routes = [
     resolve: {
       product: productResolver,
     },
+    data: { animation: 'productDetail' }
   },
 ];

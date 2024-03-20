@@ -14,6 +14,7 @@ import { Product } from '../interfaces/product';
 import { ProductFilterPipe } from '../pipes/product-filter.pipe';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { ProductsService } from '../services/products.service';
+import { trigger, transition, style, animate, state, query, stagger } from '@angular/animations';
 
 @Component({
   selector: 'products-page',
@@ -29,6 +30,24 @@ import { ProductsService } from '../services/products.service';
   ],
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.css',
+  animations: [
+    trigger('animateProduct', [
+      state('true', style({ backgroundColor: 'lightgreen' })),
+      transition('false => true', animate('300ms ease-in')),
+      transition('true => false', animate('300ms ease-out')),
+    ]),
+    trigger('animateList', [
+      transition(':increment', [
+        query('product-item:enter', [
+          style({ opacity: 0, transform: 'translateX(-100px)' }),
+          stagger(
+            100,
+            animate('500ms ease-out', style({ opacity: 1, transform: 'none' }))
+          ),
+        ]),
+      ]),
+    ]),
+  ],
 })
 export class ProductsPageComponent implements OnInit {
   title = 'Mi lista de productos';
@@ -65,5 +84,9 @@ export class ProductsPageComponent implements OnInit {
   toggleImage() {
     // this.showImage.set(!this.showImage());
     this.showImage.update((v) => !v);
+  }
+
+  toggleSelect(product: Product) {
+    product.selected = !product.selected;
   }
 }
